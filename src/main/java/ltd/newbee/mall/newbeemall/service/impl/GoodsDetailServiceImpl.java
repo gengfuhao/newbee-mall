@@ -8,11 +8,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import ltd.newbee.mall.newbeemall.dao.GoodsDetailMapper;
-import ltd.newbee.mall.newbeemall.entity.Carousel;
 import ltd.newbee.mall.newbeemall.entity.GoodsDetail;
 import ltd.newbee.mall.newbeemall.service.GoodsDetailService;
 import ltd.newbee.mall.newbeemall.vo.GoodsSpecificationsAndSizeVO;
-import ltd.newbee.mall.newbeemall.vo.NewBeeMallIndexCarouselVO;
 
 @Service
 public class GoodsDetailServiceImpl implements GoodsDetailService {

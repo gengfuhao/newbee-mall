@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="ltd.newbee.mall.newbeemall.dao.TbNewMallGoodsInfoMapper">
+	<select id="tbNewBeeMall"
+		resultType="ltd.newbee.mall.newbeemall.entity.TbNewMallGoodsInfo">
+		SELECT * FROM newbee_mall_db.tb_newbee_mall_goods_info where goods_id=#{goodsId} ;
+	</select>
+</mapper>
