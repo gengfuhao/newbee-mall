@@ -12,4 +12,6 @@ public class NewbeeMallApplication {
 		SpringApplication.run(NewbeeMallApplication.class, args);
 	     } 
 
+	
+	
 }
