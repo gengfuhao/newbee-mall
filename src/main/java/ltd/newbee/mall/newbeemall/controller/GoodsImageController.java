@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ltd.newbee.mall.newbeemall.service.GoodsImageService;
+import ltd.newbee.mall.newbeemall.service.QuetionAnswerService;
 import ltd.newbee.mall.newbeemall.service.TbNewMallGoodsInfoService;
 import ltd.newbee.mall.newbeemall.util.Result;
 import ltd.newbee.mall.newbeemall.util.ResultGenerator;
@@ -33,6 +34,19 @@ public class GoodsImageController {
 		@ResponseBody
 		public Result tbNewMallGoodsInfoService(long goodsId) {
 			return ResultGenerator.genSuccessResult(tbNewMallGoodsInfoService.tbNewBeeMall(goodsId));
+		}
+	}
+
+	
+	@Controller
+	public class QuetionController {
+		@Resource
+		QuetionAnswerService quetionAnswerService;
+
+		@GetMapping("/answer")
+		@ResponseBody
+		public Result quetionAnswerService(int goodsId,int n,int count) {
+			return ResultGenerator.genSuccessResult(quetionAnswerService.queTity(goodsId,n,count));
 		}
 	}
 
