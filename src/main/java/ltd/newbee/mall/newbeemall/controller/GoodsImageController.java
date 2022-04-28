@@ -45,8 +45,8 @@ public class GoodsImageController {
 
 		@GetMapping("/answer")
 		@ResponseBody
-		public Result quetionAnswerService(int goodsId,int n,int count) {
-			return ResultGenerator.genSuccessResult(quetionAnswerService.queTity(goodsId,n,count));
+		public Result quetionAnswerService(int goodsId,int n,int count,String countOrder) {
+			return ResultGenerator.genSuccessResult(quetionAnswerService.queTity(goodsId,n,count,countOrder));
 		}
 	}
 

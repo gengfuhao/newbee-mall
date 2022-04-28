@@ -14,28 +14,24 @@ import ltd.newbee.mall.newbeemall.vo.QuetionAnswerVO;
 import ltd.newbee.mall.newbeemall.dao.QuetionAnswerMapper;
 
 @Service
-public  class QuetionAnswerlmpl implements QuetionAnswerService {
+public class QuetionAnswerlmpl implements QuetionAnswerService {
 	@Resource
 	QuetionAnswerMapper quetionAnswerMapper;
 
 	@Override
-	public List<QuetionAnswerVO> queTity(int goodsId, int n, int count) {
+	public List<QuetionAnswerVO> queTity(int goodsId, int n, int count, String countOrder) {
 		// TODO 自動生成されたメソッド・スタブ
-//		List<QuetionAnswerVO> quetionVO = new ArrayList<>();
-//		QuetionAnswerVO quetionvo = new QuetionAnswerVO();
-//展示页面
-		int m = 0;
-		m = (n - 1) * count;
+//      展示页面
 //		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.queTity(goodsId, m, count);
 //		List<QuetionAnswerVO> imageVoList = BeanUtil.copyToList(quetionentity, QuetionAnswerVO.class);
-		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.queTity(goodsId, m, count);
-		List<QuetionAnswerEntity> quetionentity2 = quetionAnswerMapper.queTity2(goodsId);
+		int m = 0;
+		m = (n - 1) * count;
+		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.queTity(goodsId, m, count, countOrder);
 		List<QuetionAnswerVO> imageVoList = new ArrayList<>();
 
 		// 显示多少页 和一页多少个，总个数quetionentity.size();
-		QuetionAnswerlmpl answerlmpl=new QuetionAnswerlmpl();
-		int totalCount=quetionentity2.size();
-//		int totalCount=answerlmpl.queTity2(goodsId).size();
+		QuetionAnswerlmpl answercount = new QuetionAnswerlmpl();
+		int totalCount = quetionAnswerMapper.queTity2(goodsId);
 		int currentPage = count;
 		int totalPage = 0;
 		if (totalCount % currentPage == 0) {
@@ -48,7 +44,6 @@ public  class QuetionAnswerlmpl implements QuetionAnswerService {
 
 			QuetionAnswerVO vo = new QuetionAnswerVO();
 			vo.settotalCount(totalCount, currentPage, totalPage);
-
 			vo.setGoodsId(entity.getGoodsId());
 			vo.setQuestionId(entity.getQuestionId());
 			vo.setAnswerId(entity.getAnswerId());
@@ -57,23 +52,8 @@ public  class QuetionAnswerlmpl implements QuetionAnswerService {
 			imageVoList.add(vo);
 
 		}
-
 		return imageVoList;
 
-//			totalCount , currentPage , totalPage
 	}
-
-	@Override
-	public List<QuetionAnswerVO> queTity2(int goodsId) {
-		// TODO 自動生成されたメソッド・スタブ
-//		List<QuetionAnswerEntity> quetionentity2 = quetionAnswerMapper.queTity2(goodsId);
-//		List<QuetionAnswerVO> imageVoList = BeanUtil.copyToList(quetionentity2, QuetionAnswerVO.class);
-//		return imageVoList;
-		return null;
-	}
-
-	
-
-	
 
 }

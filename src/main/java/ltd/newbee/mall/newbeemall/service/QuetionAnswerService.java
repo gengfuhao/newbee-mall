@@ -8,6 +8,6 @@ import ltd.newbee.mall.newbeemall.vo.QuetionAnswerVO;
 
 public interface QuetionAnswerService {
 	
-	List<QuetionAnswerVO> queTity(int goodsId,int n,int count);
-	List<QuetionAnswerVO> queTity2(int goodsId);
+	List<QuetionAnswerVO> queTity(int goodsId,int n,int count,String countOrder);
+
 }

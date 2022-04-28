@@ -4,14 +4,29 @@
 	namespace="ltd.newbee.mall.newbeemall.dao.QuetionAnswerMapper">
 	<select id="queTity"
 		resultType="ltd.newbee.mall.newbeemall.entity.QuetionAnswerEntity">
-		select qa.answer_id,count(qa.user_id), que.question_date,
+		select qa.answer_id,que.question_date as
+		date_order,count(qa.user_id) as count_order,
 		que.question_contents,que.goods_id,ans.answer_contents
 		from answer as ans join questions as que
-		on ans.question_id=que.question_id 
-		join qa_like as qa on qa.answer_id=ans.answer_id 
+		on ans.question_id=que.question_id join qa_like as qa
+		on qa.answer_id=ans.answer_id
 		where que.goods_id=#{goodsId}
-		group by qa.answer_id
-		order by count(qa.user_id) desc,que.question_date desc
+		group by
+		qa.answer_id
+		order by 
+		<if test="countOrder='countorder'">
+		date_order desc
+		</if>
+		
+		
 		limit #{n},#{count};
 	</select>
+
+	<select id="queTity2" resultType="int">
+		select count(question_id) from
+		questions where proved=0 and goods_id=#{goodsId};
+
+	</select>
+
 </mapper>
+
