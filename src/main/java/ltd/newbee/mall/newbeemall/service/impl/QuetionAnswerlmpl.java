@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import cn.hutool.core.bean.BeanUtil;
 import ltd.newbee.mall.newbeemall.entity.QuetionAnswerEntity;
 import ltd.newbee.mall.newbeemall.service.QuetionAnswerService;
 import ltd.newbee.mall.newbeemall.vo.QuetionAnswerVO;
@@ -19,19 +18,16 @@ public class QuetionAnswerlmpl implements QuetionAnswerService {
 	QuetionAnswerMapper quetionAnswerMapper;
 
 	@Override
-	public List<QuetionAnswerVO> queTity(int goodsId, int n, int count, String countOrder) {
+	public List<QuetionAnswerVO> answereService(int goodsId,int limitstart,int count,String orderby) {
 		// TODO 自動生成されたメソッド・スタブ
 //      展示页面
-//		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.queTity(goodsId, m, count);
-//		List<QuetionAnswerVO> imageVoList = BeanUtil.copyToList(quetionentity, QuetionAnswerVO.class);
-		int m = 0;
-		m = (n - 1) * count;
-		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.queTity(goodsId, m, count, countOrder);
+		int newstart = 0;
+		newstart = (limitstart - 1) * count;
+		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.answereEntity(goodsId,newstart,count,orderby);
 		List<QuetionAnswerVO> imageVoList = new ArrayList<>();
 
 		// 显示多少页 和一页多少个，总个数quetionentity.size();
-		QuetionAnswerlmpl answercount = new QuetionAnswerlmpl();
-		int totalCount = quetionAnswerMapper.queTity2(goodsId);
+		int totalCount = quetionAnswerMapper.numberEntity(goodsId);
 		int currentPage = count;
 		int totalPage = 0;
 		if (totalCount % currentPage == 0) {
