@@ -12,7 +12,7 @@ import ltd.newbee.mall.newbeemall.service.RunRecommendApiHistoryService;
 
 @Service
 public class RunRecommendApiHistoryServiceImpl implements RunRecommendApiHistoryService {
-
+	
 	@Resource
 	RunRecommendApiHistoryMapper runRecommendApiHistoryMapper;
 	

@@ -1,7 +1,5 @@
 package ltd.newbee.mall.newbeemall.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import ltd.newbee.mall.newbeemall.service.QuetionAnswerService;
 import ltd.newbee.mall.newbeemall.service.TbNewMallGoodsInfoService;
 import ltd.newbee.mall.newbeemall.util.Result;
 import ltd.newbee.mall.newbeemall.util.ResultGenerator;
-import ltd.newbee.mall.newbeemall.vo.TbNewBeeMallGoodsInfoVO;
 
 @Controller
 public class GoodsImageController {
