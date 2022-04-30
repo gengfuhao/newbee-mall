@@ -28,13 +28,13 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
 
 		List<GoodsCategory> level1 = new ArrayList<>();
 		level1 = goodsCategoryMapper.selectByLevelAndParentIdsAndNumber(parentId, 1, 20);
-		
+
 		List<Long> categoryList1 = new ArrayList<Long>();
-		
+
 		for (GoodsCategory gc : level1) {
 			categoryList1.add(gc.getCategoryId());
 		}
-		
+
 		// level2 parentId = level1 categoryId
 		List<GoodsCategory> level2 = new ArrayList<>();
 		level2 = goodsCategoryMapper.selectByLevelAndParentIdsAndNumber(categoryList1, 2, 100);
@@ -42,7 +42,7 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
 		for (GoodsCategory gc2 : level2) {
 			categoryList2.add(gc2.getCategoryId());
 		}
-		
+
 		// level3 parentId = level2 categoryId
 		List<GoodsCategory> level3 = new ArrayList<>();
 		level3 = goodsCategoryMapper.selectByLevelAndParentIdsAndNumber(categoryList2, 3, 100);

@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class NewBeeMallGoods {
 	private Long goodsId;
-	
+
 	private String goodsName;
 
 	private String goodsIntro;
@@ -24,21 +24,21 @@ public class NewBeeMallGoods {
 	private String goodsCoverImg;
 
 	private String goodsCarousel;
-	
+
 	private String goodsDetailContent;
 
 	private Integer originalPrice;
-	
+
 	private Integer sellingPrice;
-	
+
 	private Integer stockNum;
-	
+
 	private String tag;
-	
+
 	private Byte goodsSellStatus;
-	
+
 	private Integer createUser;
-	
+
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date createTime;
 
@@ -46,7 +46,6 @@ public class NewBeeMallGoods {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date updateTime;
-
 
 	public Long getGoodsId() {
 		return goodsId;
@@ -63,7 +62,7 @@ public class NewBeeMallGoods {
 	public void getGoodsName(String goodsName) {
 		this.goodsName = goodsName == null ? null : goodsName.trim();
 	}
-	
+
 	public String getGoodsIntro() {
 		return goodsIntro;
 	}
@@ -71,7 +70,7 @@ public class NewBeeMallGoods {
 	public void getGoodsIntro(String goodsName) {
 		this.goodsIntro = goodsIntro == null ? null : goodsIntro.trim();
 	}
-	
+
 	public Long getGoodsCategoryId() {
 		return goodsCategoryId;
 	}
@@ -79,101 +78,102 @@ public class NewBeeMallGoods {
 	public void getGoodsCategoryId(Long goodsCategoryId) {
 		this.goodsCategoryId = goodsCategoryId;
 	}
+
 	public String getGoodsCoverImg() {
-        return goodsCoverImg;
-    }
+		return goodsCoverImg;
+	}
 
-    public void setGoodsCoverImg(String goodsCoverImg) {
-        this.goodsCoverImg = goodsCoverImg == null ? null : goodsCoverImg.trim();
-    }
+	public void setGoodsCoverImg(String goodsCoverImg) {
+		this.goodsCoverImg = goodsCoverImg == null ? null : goodsCoverImg.trim();
+	}
 
-    public String getGoodsCarousel() {
-        return goodsCarousel;
-    }
+	public String getGoodsCarousel() {
+		return goodsCarousel;
+	}
 
-    public void setGoodsCarousel(String goodsCarousel) {
-        this.goodsCarousel = goodsCarousel == null ? null : goodsCarousel.trim();
-    }
-    
-    public String getGoodsDetailContent() {
-        return goodsDetailContent;
-    }
+	public void setGoodsCarousel(String goodsCarousel) {
+		this.goodsCarousel = goodsCarousel == null ? null : goodsCarousel.trim();
+	}
 
-    public void setGoodsDetailContent(String goodsDetailContent) {
-        this.goodsDetailContent = goodsDetailContent == null ? null : goodsDetailContent.trim();
-    }
+	public String getGoodsDetailContent() {
+		return goodsDetailContent;
+	}
 
-    public Integer getOriginalPrice() {
-        return originalPrice;
-    }
+	public void setGoodsDetailContent(String goodsDetailContent) {
+		this.goodsDetailContent = goodsDetailContent == null ? null : goodsDetailContent.trim();
+	}
 
-    public void setOriginalPrice(Integer originalPrice) {
-        this.originalPrice = originalPrice;
-    }
+	public Integer getOriginalPrice() {
+		return originalPrice;
+	}
 
-    public Integer getSellingPrice() {
-        return sellingPrice;
-    }
+	public void setOriginalPrice(Integer originalPrice) {
+		this.originalPrice = originalPrice;
+	}
 
-    public void setSellingPrice(Integer sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
+	public Integer getSellingPrice() {
+		return sellingPrice;
+	}
 
-    public Integer getStockNum() {
-        return stockNum;
-    }
+	public void setSellingPrice(Integer sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
 
-    public void setStockNum(Integer stockNum) {
-        this.stockNum = stockNum;
-    }
+	public Integer getStockNum() {
+		return stockNum;
+	}
 
-    public String getTag() {
-        return tag;
-    }
+	public void setStockNum(Integer stockNum) {
+		this.stockNum = stockNum;
+	}
 
-    public void setTag(String tag) {
-        this.tag = tag == null ? null : tag.trim();
-    }
+	public String getTag() {
+		return tag;
+	}
 
-    public Byte getGoodsSellStatus() {
-        return goodsSellStatus;
-    }
+	public void setTag(String tag) {
+		this.tag = tag == null ? null : tag.trim();
+	}
 
-    public void setGoodsSellStatus(Byte goodsSellStatus) {
-        this.goodsSellStatus = goodsSellStatus;
-    }
+	public Byte getGoodsSellStatus() {
+		return goodsSellStatus;
+	}
 
-    public Integer getCreateUser() {
-        return createUser;
-    }
+	public void setGoodsSellStatus(Byte goodsSellStatus) {
+		this.goodsSellStatus = goodsSellStatus;
+	}
 
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
+	public Integer getCreateUser() {
+		return createUser;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public void setCreateUser(Integer createUser) {
+		this.createUser = createUser;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
+	public Integer getUpdateUser() {
+		return updateUser;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public void setUpdateUser(Integer updateUser) {
+		this.updateUser = updateUser;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
 	@Override
 	public String toString() {

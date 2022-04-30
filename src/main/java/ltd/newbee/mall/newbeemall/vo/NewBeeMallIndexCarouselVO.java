@@ -15,23 +15,23 @@ import java.io.Serializable;
  */
 public class NewBeeMallIndexCarouselVO implements Serializable {
 
-    private String carouselUrl;
+	private String carouselUrl;
 
-    private String redirectUrl;
+	private String redirectUrl;
 
-    public String getCarouselUrl() {
-        return carouselUrl;
-    }
+	public String getCarouselUrl() {
+		return carouselUrl;
+	}
 
-    public void setCarouselUrl(String carouselUrl) {
-        this.carouselUrl = carouselUrl;
-    }
+	public void setCarouselUrl(String carouselUrl) {
+		this.carouselUrl = carouselUrl;
+	}
 
-    public String getRedirectUrl() {
-        return redirectUrl;
-    }
+	public String getRedirectUrl() {
+		return redirectUrl;
+	}
 
-    public void setRedirectUrl(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
-    }
+	public void setRedirectUrl(String redirectUrl) {
+		this.redirectUrl = redirectUrl;
+	}
 }

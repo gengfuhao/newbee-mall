@@ -12,10 +12,10 @@ import ltd.newbee.mall.newbeemall.service.RunRecommendApiHistoryService;
 
 @Service
 public class RunRecommendApiHistoryServiceImpl implements RunRecommendApiHistoryService {
-	
+
 	@Resource
 	RunRecommendApiHistoryMapper runRecommendApiHistoryMapper;
-	
+
 	@Override
 	public int insertRunRecommendApiHistory(List<RunRecommendApiHistory> list) {
 
@@ -27,7 +27,5 @@ public class RunRecommendApiHistoryServiceImpl implements RunRecommendApiHistory
 		// TODO 自動生成されたメソッド・スタブ
 		return runRecommendApiHistoryMapper.selectRescentCategoryId();
 	}
-	
-	
-	
+
 }

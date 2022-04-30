@@ -17,22 +17,22 @@ public class NewBeeMallCarouselServiceImpl implements NewBeeMallCarouselService 
 
 	@Resource
 	CarouselMapper carouselMapper;
-	
+
 	@Override
-	public List<NewBeeMallIndexCarouselVO> getCarouselsForIndex(int number){
+	public List<NewBeeMallIndexCarouselVO> getCarouselsForIndex(int number) {
 		List<NewBeeMallIndexCarouselVO> volist = new ArrayList<>();
-		
-		List<Carousel> carouselList= new ArrayList<>();
+
+		List<Carousel> carouselList = new ArrayList<>();
 		carouselList = carouselMapper.findCarouselsByNum(3);
-		
-		for(Carousel entity : carouselList) {
+
+		for (Carousel entity : carouselList) {
 			NewBeeMallIndexCarouselVO vo = new NewBeeMallIndexCarouselVO();
 			vo.setCarouselUrl(entity.getCarouselUrl());
 			vo.setRedirectUrl(entity.getRedirectUrl());
-			
+
 			volist.add(vo);
 		}
 		return volist;
 	}
-	
+
 }

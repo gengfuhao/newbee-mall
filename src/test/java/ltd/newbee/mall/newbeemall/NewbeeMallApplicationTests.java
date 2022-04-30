@@ -20,27 +20,24 @@ class NewbeeMallApplicationTests {
 
 	@Resource
 	RunRecommendApiHistoryService runRecommendApiHistoryService;
-	
-	
+
 	/*
 	 * @Test void contextLoads() {
 	 * 
-	 * List<RunRecommendApiHistory> list = new ArrayList<>();
-	 * RunRecommendApiHistory h1 = new RunRecommendApiHistory(); 
-	 * h1.setUserId(1); h1.setCategoryId(0);
+	 * List<RunRecommendApiHistory> list = new ArrayList<>(); RunRecommendApiHistory
+	 * h1 = new RunRecommendApiHistory(); h1.setUserId(1); h1.setCategoryId(0);
 	 * h1.setRunDate(new Date()); list.add(h1);
 	 * 
 	 * int cnt = runRecommendApiHistoryService.insertRunRecommendApiHistory(list);
 	 * assertEquals(1,cnt); }
 	 */
-	 
-	
+
 	@Test
 	void testSelectRescentCategoryId() {
 		List<RunRecommendApiHistory> list = runRecommendApiHistoryService.selectRescentCategoryId();
-		assertEquals(2,list.size());
+		assertEquals(2, list.size());
 		assertTrue(list.contains(51l));
 		assertTrue(list.contains(86l));
-		
+
 	}
 }

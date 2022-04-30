@@ -14,10 +14,10 @@ import ltd.newbee.mall.newbeemall.util.ResultGenerator;
 public class GoodsDetailController {
 	@Resource
 	private GoodsDetailService goodsDetailService;
-	
+
 	@GetMapping("/goodsDetail")
-    @ResponseBody
-    public Result getgoodsDetail(long goodsId) {
-        return ResultGenerator.genSuccessResult(goodsDetailService.findGoodsDetailsByGoodsId(goodsId));
-    }
+	@ResponseBody
+	public Result getgoodsDetail(long goodsId) {
+		return ResultGenerator.genSuccessResult(goodsDetailService.findGoodsDetailsByGoodsId(goodsId));
+	}
 }

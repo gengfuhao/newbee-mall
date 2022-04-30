@@ -34,7 +34,6 @@ public class GoodsImageController {
 		}
 	}
 
-	
 	@Controller
 	public class QuetionController {
 		@Resource
@@ -42,8 +41,9 @@ public class GoodsImageController {
 
 		@GetMapping("/answer")
 		@ResponseBody
-		public Result quetionAnswerService(int goodsId,int limitstart,int count,String orderby) {
-			return ResultGenerator.genSuccessResult(quetionAnswerService.answereService(goodsId,limitstart,count,orderby));
+		public Result quetionAnswerService(int goodsId, int limitstart, int count, String orderby) {
+			return ResultGenerator
+					.genSuccessResult(quetionAnswerService.answereService(goodsId, limitstart, count, orderby));
 		}
 	}
 

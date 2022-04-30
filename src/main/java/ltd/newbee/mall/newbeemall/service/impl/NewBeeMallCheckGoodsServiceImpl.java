@@ -67,9 +67,10 @@ public class NewBeeMallCheckGoodsServiceImpl implements NewBeeMallCheckGoodsServ
 
 		List<NewBeeMallGoods> entityList = new ArrayList<>();
 		entityList = checkGoodsMapper.findRescentCheckGoodsByJoin(userId, 6);
-		
-		//也可以这么写
-		//List<NewBeeMallGoods> entityList = rescentCheckGoodsMapper.getRescentCheckGoodses(userId, number);
+
+		// 也可以这么写
+		// List<NewBeeMallGoods> entityList =
+		// rescentCheckGoodsMapper.getRescentCheckGoodses(userId, number);
 
 		if (entityList != null) {
 			for (NewBeeMallGoods entity : entityList) {

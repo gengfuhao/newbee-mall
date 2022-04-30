@@ -10,6 +10,6 @@ import ltd.newbee.mall.newbeemall.entity.NewBeeMallGoods;
 public interface CheckGoodsMapper {
 
 	List<CheckGoods> findCheckGoodsByUserId(@Param("userId") long userId, @Param("number") int number);
-	
+
 	List<NewBeeMallGoods> findRescentCheckGoodsByJoin(long userId, int number);
 }

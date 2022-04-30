@@ -18,12 +18,12 @@ public class QuetionAnswerlmpl implements QuetionAnswerService {
 	QuetionAnswerMapper quetionAnswerMapper;
 
 	@Override
-	public List<QuetionAnswerVO> answereService(int goodsId,int limitstart,int count,String orderby) {
+	public List<QuetionAnswerVO> answereService(int goodsId, int limitstart, int count, String orderby) {
 		// TODO 自動生成されたメソッド・スタブ
 //      展示页面
 		int newstart = 0;
 		newstart = (limitstart - 1) * count;
-		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.answereEntity(goodsId,newstart,count,orderby);
+		List<QuetionAnswerEntity> quetionentity = quetionAnswerMapper.answereEntity(goodsId, newstart, count, orderby);
 		List<QuetionAnswerVO> imageVoList = new ArrayList<>();
 
 		// 显示多少页 和一页多少个，总个数quetionentity.size();

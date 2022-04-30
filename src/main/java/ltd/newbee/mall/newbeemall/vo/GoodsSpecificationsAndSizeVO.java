@@ -54,12 +54,12 @@ public class GoodsSpecificationsAndSizeVO implements Serializable {
 	}
 
 	private String color;
-	
+
 	private String size;
-	
+
 	private String material;
-	
+
 	private String warranty;
-	
+
 	private String wrapSize;
 }

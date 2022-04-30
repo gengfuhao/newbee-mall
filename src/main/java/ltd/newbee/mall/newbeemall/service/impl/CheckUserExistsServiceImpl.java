@@ -13,12 +13,12 @@ public class CheckUserExistsServiceImpl implements CheckUserExistsService {
 
 	@Resource
 	UserMapper userMapper;
-	
+
 	@Override
 	public MallUser checkUserExists(long userId) {
 		return userMapper.checkUserExists(userId);
 	}
-	
+
 	@Override
 	public int checkUserExistsReturnCount(Long userId) {
 		return userMapper.checkUserExistsReturnCount(userId);

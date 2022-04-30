@@ -11,7 +11,7 @@
 		order by rating desc;
 	</select>
 	<!--插入-->
-	<select id="selectreview"
+	<select id="judgeEntity"
 		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
 		select
 		rev.order_id,ord.user_id,it.goods_id,it.order_id,it.goods_name
@@ -22,12 +22,12 @@
 		where rev.order_id is null and user_id=#{userId} and it.goods_id=#{goodsId};
 	</select>
 	
-	<insert id="insertReview">
-		insert into review (review_id,order_id,nick_name,rating,title,content,photo1,date,goods_id)
+	<insert id="insertEntity">
+		insert into review (review_id,order_id,nick_name,rating,title,content,photol1,photol2,photol3,photol4,photol5,date,goods_id)
 		values
 		<foreach item="item" collection="list" separator=",">
-			(#{item.reviewId}, #{item.orderId}, #{item.nickName},#{item.rating},#{item.title},#{item.content},#{item.photo1},
-			#{item.date},#{item.goodsId})
+			(#{item.reviewId}, #{item.orderId}, #{item.nickName},#{item.rating},#{item.title},#{item.content},#{item.photol1},#{item.photol2},
+			#{item.photol3},#{item.photol4},#{item.photol5},#{item.date},#{item.goodsId})
 		</foreach>
 	</insert>
 

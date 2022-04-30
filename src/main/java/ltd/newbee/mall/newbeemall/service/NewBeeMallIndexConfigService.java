@@ -4,7 +4,6 @@ import java.util.List;
 
 import ltd.newbee.mall.newbeemall.vo.NewBeeMallGoodsDetailVO;
 
-
 public interface NewBeeMallIndexConfigService {
-	List<NewBeeMallGoodsDetailVO> getConfigGoodsesForIndex(int configType ,int number);
+	List<NewBeeMallGoodsDetailVO> getConfigGoodsesForIndex(int configType, int number);
 }

@@ -14,4 +14,4 @@ public interface IndexConfigMapper {
 
 	List<NewBeeMallGoods> selectByPrimarKeys(List<Long> goods_id);
 
-} 
+}

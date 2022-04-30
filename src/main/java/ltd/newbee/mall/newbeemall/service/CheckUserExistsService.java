@@ -4,6 +4,6 @@ import ltd.newbee.mall.newbeemall.entity.MallUser;
 
 public interface CheckUserExistsService {
 	MallUser checkUserExists(long userId);
-	
+
 	int checkUserExistsReturnCount(Long userId);
 }
