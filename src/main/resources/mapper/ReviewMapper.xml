@@ -23,12 +23,16 @@
 	</select>
 	
 	<insert id="insertEntity">
-		insert into review (review_id,order_id,nick_name,rating,title,content,photol1,photol2,photol3,photol4,photol5,date,goods_id)
+		insert into review (review_id,order_id,nick_name,rating,title,content,photo1,photo2,photo3,photo4,photo5,date,goods_id)
 		values
 		<foreach item="item" collection="list" separator=",">
-			(#{item.reviewId}, #{item.orderId}, #{item.nickName},#{item.rating},#{item.title},#{item.content},#{item.photol1},#{item.photol2},
-			#{item.photol3},#{item.photol4},#{item.photol5},#{item.date},#{item.goodsId})
+			(#{item.reviewId}, #{item.orderId}, #{item.nickName},#{item.rating},#{item.title},#{item.content},#{item.photo1},#{item.photo2},
+			#{item.photo3},#{item.photo4},#{item.photo5},#{item.date},#{item.goodsId})
 		</foreach>
 	</insert>
+	<select id="maxReviewId" resultType="int">
+ 		SELECT max(review_id)
+ 		FROM review
+ 	</select>
 
 </mapper>

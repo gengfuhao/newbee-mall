@@ -1,6 +1,9 @@
 package ltd.newbee.mall.newbeemall.service.impl;
 
+
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -38,5 +41,19 @@ public class ReviewServicelmpl implements ReviewService {
 		return reviewMapper.insertEntity(list);
 
 	}
+
+	@Override
+	public int insertGoodsReview(Map<String, Object> review) {
+		
+		// TODO 自動生成されたメソッド・スタブ
+		int newReviewId=reviewMapper.maxReviewId()+1;
+		review.replace("reviewId", newReviewId);
+		review.replace("date", new Date());
+		
+		return reviewMapper.insertGoodsReview(review);
+	}
+
+	
+	
 
 }
