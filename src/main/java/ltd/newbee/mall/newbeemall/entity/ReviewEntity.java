@@ -19,8 +19,24 @@ public class ReviewEntity {
 	private String photo3;
 	private String photo4;
 	private String photo5;
+	private int sumStar;
+	private int countPeople;
+	
+	
+	public int getSumStar() {
+		return sumStar;
+	}
+	public void setSumStar(int sumStar) {
+		this.sumStar = sumStar;
+	}
+	public int getCountPeople() {
+		return countPeople;
+	}
+	public void setCountPeople(int countPeople) {
+		this.countPeople = countPeople;
+	}
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date date;
+	private Date reviewDate;
 	public int getGoodsId() {
 		return goodsId;
 	}
@@ -93,13 +109,13 @@ public class ReviewEntity {
 	public void setPhoto5(String photo5) {
 		this.photo5 = photo5;
 	}
-	public Date getDate() {
-		return date;
+	public Date getReviewDate() {
+		return reviewDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
-	};
-
+	public void setReviewDate(Date reviewDate) {
+		this.reviewDate = reviewDate;
+	}
+	
 	
 	
 }
