@@ -1,38 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ltd.newbee.mall.newbeemall.dao.ReviewMapper">
-<!--レビュー-->
+	<!--レビュー -->
 	<select id="reviewEntity"
 		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
-		select distinct rev.goods_id,rev.review_id,rev.order_id,
-		rev.nick_name,rev.rating,rev.title,rev.content,rev.photo1,li.review_id from review as rev  join tb_newbee_mall_order_item as ite
-		on ite.order_id=rev.order_id left join review_like as li on rev.review_id=li.review_id 
-		where rev.goods_id=#{goodsId}		
-		order by rating desc;
+		select
+		distinct rev.goods_id,rev.review_id,rev.order_id,
+		rev.nick_name,rev.rating,rev.title,rev.content,rev.photo1,
+		li.review_id,count(li.review_id) as count
+		from
+		review as rev join
+		tb_newbee_mall_order_item as ite
+		on
+		ite.order_id=rev.order_id and
+		ite.goods_id=rev.goods_id
+		left join review_like as li
+		on
+		rev.review_id=li.review_id
+		where
+		rev.goods_id=#{goodsId}
+		group by
+		rev.review_id
+		order by rating desc,count desc;
 	</select>
-	<!--插入-->
+
+	<!--插入 -->
+	<insert id="insertGoodsReview">
+		insert into review
+		(review_id,order_id,nick_name,rating,title,content,photo1,photo2,photo3,photo4,photo5,review_date,goods_id)
+		values
+		(#{reviewId}, #{orderId},
+		#{nickName},#{rating},#{title},#{content},#{photo1},#{photo2},
+		#{photo3},#{photo4},#{photo5},#{reviewDate},#{goodsId})
+	</insert>
+	<!--获取下个review_id -->
+	<select id="maxReviewId" resultType="int">
+		select max(review_id) from
+		review
+	</select>
+	<!-- 判断是否可以插入 -->
 	<select id="judgeEntity"
 		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
-		select
-		rev.order_id,ord.user_id,it.goods_id,it.order_id,it.goods_name
-		from tb_newbee_mall_order_item as it left join review as rev
-		on rev.order_id=it.order_id and rev.goods_id=it.goods_id left join
+		select rev.order_id,ord.user_id,it.goods_id
+		from
+		tb_newbee_mall_order_item as it left join review as rev
+		on
+		rev.order_id=it.order_id and rev.goods_id=it.goods_id
+		join
 		tb_newbee_mall_order as ord
-		on it.order_id=ord.order_id
-		where rev.order_id is null and user_id=#{userId} and it.goods_id=#{goodsId};
+		on
+		it.order_id=ord.order_id
+		where
+		rev.order_id is null
+		and user_id=#{userId} and it.goods_id=#{goodsId};
 	</select>
-	
-	<insert id="insertEntity">
-		insert into review (review_id,order_id,nick_name,rating,title,content,photo1,photo2,photo3,photo4,photo5,date,goods_id)
-		values
-		<foreach item="item" collection="list" separator=",">
-			(#{item.reviewId}, #{item.orderId}, #{item.nickName},#{item.rating},#{item.title},#{item.content},#{item.photo1},#{item.photo2},
-			#{item.photo3},#{item.photo4},#{item.photo5},#{item.date},#{item.goodsId})
-		</foreach>
-	</insert>
-	<select id="maxReviewId" resultType="int">
- 		SELECT max(review_id)
- 		FROM review
- 	</select>
+
+	<!-- 求各个星的个数 -->
+	<select id="starNumber" resultType="int">
+		select distinct
+		(select count(rating) from review where rating=5 and goods_id=#{goodsId} group by
+		rating) as rating5,
+		(select count(rating) from review where rating=4 and goods_id=#{goodsId} group by
+		rating) as rating4,
+		(select count(rating) from review where rating=3 and goods_id=#{goodsId} group by
+		rating) as rating3,
+		(select count(rating) from review where rating=2 and goods_id=#{goodsId} group by
+		rating) as rating2,
+		(select count(rating) from review where rating=1 and goods_id=#{goodsId} group by
+		rating) as rating1
+		from review group by rating
+	</select>
+
+
+	<!-- 求各个星的个数 -->
+	<select id="starNumber" resultType="int">
+		select distinct count(rating)
+		from review where rating=#{rating} and
+		goods_id=#{goodsId} group by
+		rating
+	</select>
+
+
+	<!-- 商品レビュー个数 -->
+	<select id="ratingNumber" resultType="int">
+		select count(rating) from
+		review where goods_id=#{goodsId}
+	</select>
+	<!-- 综合评价和评价数 -->
+	<select id="comStar"
+		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
+		select
+		sum(rating) as sumStar,count(review_id) as
+		countPeople from review where goods_id=#{goodsId}
+	</select>
+
 
 </mapper>

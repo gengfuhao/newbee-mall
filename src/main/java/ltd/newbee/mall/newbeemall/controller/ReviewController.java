@@ -29,6 +29,7 @@ public class ReviewController {
 	@Resource
 	ReviewMapper reviewMapper;
 
+//getmaping postmaping 一样
 	@GetMapping("/review")
 	@ResponseBody
 	public Result getreviewc(int goodsId) {
@@ -37,6 +38,48 @@ public class ReviewController {
 
 	}
 
+	// postmaping 设置 post-body-raw-json
+	@PostMapping("/goodsReview/insert")
+	@ResponseBody
+	public Result insertReview(@RequestBody HashMap<String, Object> reviewMap) {
+//		int goodsid=(int)(reviewMap.get("goodsId"));
+//		int userid=(int)(reviewMap.get("userId"));
+		String goodsid=reviewMap.get("goodsId").toString();
+		String userid=reviewMap.get("userId").toString();
+		int newgoodsid=Integer.parseInt(goodsid);
+		int newuserid=Integer.parseInt(userid);
+		
+		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(newgoodsid,newuserid);
+		if (entitylist == null) {
+			return ResultGenerator.genFailResult("failed");
+		} else {
+			return ResultGenerator.genSuccessResult(reviewService.insertGoodsReview(reviewMap));
+		}
+		
+	}
+	@GetMapping("/reviewStar")
+	@ResponseBody
+	public Result getReviewStar(int goodsId) {
+
+		return ResultGenerator.genSuccessResult(reviewService.comStar(goodsId));
+
+	}
+	
+	
+
+//	// 判断是否可以插入
+//	@GetMapping("/checkReview")
+//	@ResponseBody
+//	public Result checkReview(int goodsId, int userId) {
+//		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(goodsId, userId);
+//
+//		if (entitylist == null) {
+//			return ResultGenerator.genFailResult("failed");
+//		} else {
+//			return ResultGenerator.genSuccessResult("successed");
+//		}
+//
+//	}
 ////Data date
 //	@GetMapping("/getreview")
 //	@ResponseBody
@@ -73,14 +116,5 @@ public class ReviewController {
 //		}
 //
 //	}
-	
-	
-	@PostMapping("/goodsReview/insert")
-    @ResponseBody
-    public Result insertReview(@RequestBody HashMap<String,Object> reviewMap) {
-
-		return ResultGenerator.genSuccessResult(reviewService.insertGoodsReview(reviewMap));
-	}
-	
 
 }
