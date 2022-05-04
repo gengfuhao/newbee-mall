@@ -56,42 +56,39 @@
 	</select>
 
 	<!-- 求各个星的个数 -->
-	<select id="starNumber" resultType="int">
+	<select id="starNumber" resultType="ltd.newbee.mall.newbeemall.entity.starNumberEntity">
 		select distinct
-		(select count(rating) from review where rating=5 and goods_id=#{goodsId} group by
-		rating) as rating5,
-		(select count(rating) from review where rating=4 and goods_id=#{goodsId} group by
-		rating) as rating4,
-		(select count(rating) from review where rating=3 and goods_id=#{goodsId} group by
-		rating) as rating3,
-		(select count(rating) from review where rating=2 and goods_id=#{goodsId} group by
-		rating) as rating2,
-		(select count(rating) from review where rating=1 and goods_id=#{goodsId} group by
-		rating) as rating1
-		from review group by rating
+		(select
+		count(rating) from review where rating=5 and
+		goods_id=#{goodsId} ) as
+		rating5,
+		(select count(rating) from review
+		where rating=4 and
+		goods_id=#{goodsId} ) as rating4,
+		(select
+		count(rating) from review
+		where rating=3 and goods_id=#{goodsId} ) as
+		rating3,
+		(select
+		count(rating) from review where rating=2 and
+		goods_id=#{goodsId} ) as
+		rating2,
+		(select count(rating) from review
+		where rating=1 and
+		goods_id=#{goodsId} ) as rating1
+		from review
 	</select>
 
 
-	<!-- 求各个星的个数 -->
-	<select id="starNumber" resultType="int">
-		select distinct count(rating)
-		from review where rating=#{rating} and
-		goods_id=#{goodsId} group by
-		rating
-	</select>
 
 
-	<!-- 商品レビュー个数 -->
-	<select id="ratingNumber" resultType="int">
-		select count(rating) from
-		review where goods_id=#{goodsId}
-	</select>
-	<!-- 综合评价和评价数 -->
+	<!-- 平均レート 总评价  只评论数 -->
 	<select id="comStar"
-		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
+		resultType="ltd.newbee.mall.newbeemall.entity.starNumberEntity">
 		select
-		sum(rating) as sumStar,count(review_id) as
-		countPeople from review where goods_id=#{goodsId}
+		sum(rating)/count(review_id) as
+		count_star,count(content) as count_content,count(rating) as count_rating from review
+		where goods_id=#{goodsId}
 	</select>
 
 

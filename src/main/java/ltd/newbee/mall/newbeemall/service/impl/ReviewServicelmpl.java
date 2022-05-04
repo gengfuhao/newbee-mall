@@ -56,35 +56,34 @@ public class ReviewServicelmpl implements ReviewService {
 		return reviewMapper.insertGoodsReview(review);
 	}
 
-@Override
-public List<starNumberVO> comStar(int goodsId) {
-	// TODO 自動生成されたメソッド・スタ
-	starNumberVO starVO =new starNumberVO();
-	List<starNumberVO> voList =new ArrayList<>();
-	
-	List<starNumberEntity> starnumber = reviewMapper.starNumber(goodsId);
-	for(starNumberEntity entitynumber : starnumber) {
-	starVO.setRating5(entitynumber.getRating5());
-	starVO.setRating4(entitynumber.getRating4());
-	starVO.setRating3(entitynumber.getRating3());
-	starVO.setRating2(entitynumber.getRating2());
-	starVO.setRating1(entitynumber.getRating1());
-	}
-	
-	List<ReviewEntity> starEntity1 = reviewMapper.comStar(goodsId);
-	for(ReviewEntity entity : starEntity1) {
-		int allstar=entity.getSumStar();
-		int allpeople=entity.getCountPeople();
-		int average=allstar/allpeople;
-		starVO.setRatingAverage(average);
-		starVO.setEvaluation(entity.getCountPeople());
-		
-	}
 
-	starVO.setAllStarEvaluation(reviewMapper.ratingNumber(goodsId));
-voList.add(starVO);
+
+	@Override
+	public List<starNumberVO> comStar(int goodsId) {
+		starNumberVO starVO =new starNumberVO();
+		List<starNumberVO> voList =new ArrayList<>();
+		
+		List<starNumberEntity> starnumber = reviewMapper.starNumber(goodsId);
+	for(starNumberEntity entitynumber : starnumber) {
+		starVO.setRating5(entitynumber.getRating5());
+		starVO.setRating4(entitynumber.getRating4());
+		starVO.setRating3(entitynumber.getRating3());
+		starVO.setRating2(entitynumber.getRating2());
+		starVO.setRating1(entitynumber.getRating1());
+		
+		}
+	
+	List<starNumberEntity> reviewcount=reviewMapper.comStar(goodsId);
+	for(starNumberEntity entitynumber : reviewcount) {
+		starVO.setCountContent(entitynumber.getCountContent());
+		starVO.setCountRating(entitynumber.getCountRating());
+		starVO.setCountStar(entitynumber.getCountStar());
+		
+		}
+	voList.add(starVO);
 	return voList;
-}
+	}
+	
 
 	
 }

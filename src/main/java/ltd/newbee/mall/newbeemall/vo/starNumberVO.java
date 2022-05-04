@@ -6,12 +6,30 @@ public class starNumberVO {
 	private int rating3;
 	private int rating2;
 	private int rating1;
+	private double countStar;
+	private int countContent;
+	private int countRating;
 	
-	private int ratingAverage;
-	private int evaluation;
-	private int allStarEvaluation;
 	
 	
+	public double getCountStar() {
+		return countStar;
+	}
+	public void setCountStar(double countStar) {
+		this.countStar = countStar;
+	}
+	public int getCountContent() {
+		return countContent;
+	}
+	public void setCountContent(int countContent) {
+		this.countContent = countContent;
+	}
+	public int getCountRating() {
+		return countRating;
+	}
+	public void setCountRating(int countRating) {
+		this.countRating = countRating;
+	}
 	public int getRating5() {
 		return rating5;
 	}
@@ -42,24 +60,7 @@ public class starNumberVO {
 	public void setRating1(int rating1) {
 		this.rating1 = rating1;
 	}
-	public int getRatingAverage() {
-		return ratingAverage;
-	}
-	public void setRatingAverage(int ratingAverage) {
-		this.ratingAverage = ratingAverage;
-	}
-	public int getEvaluation() {
-		return evaluation;
-	}
-	public void setEvaluation(int evaluation) {
-		this.evaluation = evaluation;
-	}
-	public int getAllStarEvaluation() {
-		return allStarEvaluation;
-	}
-	public void setAllStarEvaluation(int allStarEvaluation) {
-		this.allStarEvaluation = allStarEvaluation;
-	}
+	
 	
 	
 

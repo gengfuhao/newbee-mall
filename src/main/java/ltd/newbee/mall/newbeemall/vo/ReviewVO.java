@@ -15,7 +15,7 @@ public class ReviewVO {
 	private String photo3;
 	private String photo4;
 	private String photo5;
-	private Data reviewDateate;
+	private Data reviewDate;
 	public int getGoodsId() {
 		return goodsId;
 	}
@@ -88,12 +88,13 @@ public class ReviewVO {
 	public void setPhoto5(String photo5) {
 		this.photo5 = photo5;
 	}
-	public Data getReviewDateate() {
-		return reviewDateate;
+	public Data getReviewDate() {
+		return reviewDate;
 	}
-	public void setReviewDateate(Data reviewDateate) {
-		this.reviewDateate = reviewDateate;
+	public void setReviewDate(Data reviewDate) {
+		this.reviewDate = reviewDate;
 	}
+	
 	
 	
 

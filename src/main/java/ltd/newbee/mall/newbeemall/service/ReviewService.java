@@ -17,12 +17,9 @@ public interface ReviewService {
 
 	// 判断是否可以插入
 	List<ReviewEntity> judgeEntity(int goodsId, int userId);
-
-//	int insertEntity(List<ReviewEntity> list);
-	//求各个星的个数
-
-
-	// 综合评价 和 评价个数
-	List<starNumberVO> comStar(int goodsId);
+	
+	
+	//综合评价 和 评价个数  平均分数
+		List<starNumberVO> comStar(int goodsId);
 
 }
