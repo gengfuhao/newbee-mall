@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import ltd.newbee.mall.newbeemall.entity.QuetionAnswerEntity;
+import ltd.newbee.mall.newbeemall.entity.answerLikeEntity;
 import ltd.newbee.mall.newbeemall.service.QuetionAnswerService;
 import ltd.newbee.mall.newbeemall.vo.QuetionAnswerVO;
 import ltd.newbee.mall.newbeemall.dao.QuetionAnswerMapper;
@@ -50,6 +51,18 @@ public class QuetionAnswerlmpl implements QuetionAnswerService {
 		}
 		return imageVoList;
 
+	}
+
+	@Override
+	public List<answerLikeEntity> judgeLike(int answerId, int userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return quetionAnswerMapper.judgeLike(answerId, userId);
+	}
+
+	@Override
+	public int insertAnswerLike(List<answerLikeEntity> answerLike) {
+		// TODO 自動生成されたメソッド・スタブ
+		return quetionAnswerMapper.insertAnswerLike(answerLike);
 	}
 
 }

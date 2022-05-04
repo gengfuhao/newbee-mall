@@ -30,6 +30,22 @@
 		questions where proved=0 and goods_id=#{goodsId};
 
 	</select>
+	
+	
+	<!-- 点赞 -->
+	<!-- 判断是否可以插入 -->
+	<select id="judgeLike"
+		resultType="ltd.newbee.mall.newbeemall.entity.answerLikeEntity">
+		select user_id,answer_id from qa_like where user_id=#{userId} and answer_id=#{answerId}
+	</select>
+	<insert id="insertAnswerLike">
+		insert into qa_like
+		(answer_id,user_id,like_date)
+		values
+		<foreach item="item" collection="list" separator=",">
+			(#{item.answerId},#{item.userId},#{item.likeDate})
+		</foreach>
+	</insert>
 
 </mapper>
 
