@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import ltd.newbee.mall.newbeemall.entity.ReviewEntity;
+import ltd.newbee.mall.newbeemall.entity.reviewLikeEntity;
 import ltd.newbee.mall.newbeemall.entity.starNumberEntity;
 
 public interface ReviewMapper {
@@ -23,5 +24,12 @@ public interface ReviewMapper {
 	
 	//综合评价 和 评价个数  平均分数
 	List<starNumberEntity> comStar(int goodsId);
+	
+	
+	//点赞 插入
+	//判断是否点赞了
+	List<reviewLikeEntity> judgeLike(int reviewId,int userId);
+	//插入
+	int insertReviewLike(List<reviewLikeEntity> reviewLike);
 
 }

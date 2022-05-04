@@ -90,6 +90,20 @@
 		count_star,count(content) as count_content,count(rating) as count_rating from review
 		where goods_id=#{goodsId}
 	</select>
-
-
+	
+	<!-- 点赞 -->
+	<!-- 判断是否可以插入 -->
+	<select id="judgeLike"
+		resultType="ltd.newbee.mall.newbeemall.entity.reviewLikeEntity">
+		select user_id,review_id from review_like where user_id=#{userId} and review_id=#{reviewId}
+	</select>
+	<insert id="insertReviewLike">
+		insert into review_like
+		(review_id,user_id,review_date)
+		values
+		<foreach item="item" collection="list" separator=",">
+			(#{item.reviewId},#{item.userId},#{item.reviewDate})
+		</foreach>
+	</insert>
+	
 </mapper>
