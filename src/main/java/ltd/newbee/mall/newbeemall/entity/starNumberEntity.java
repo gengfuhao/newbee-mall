@@ -6,6 +6,30 @@ public class starNumberEntity {
 	private int rating3;
 	private int rating2;
 	private int rating1;
+	private double countStar;
+	private int countContent;
+	private int countRating;
+	
+	
+	
+	public double getCountStar() {
+		return countStar;
+	}
+	public void setCountStar(double countStar) {
+		this.countStar = countStar;
+	}
+	public int getCountContent() {
+		return countContent;
+	}
+	public void setCountContent(int countContent) {
+		this.countContent = countContent;
+	}
+	public int getCountRating() {
+		return countRating;
+	}
+	public void setCountRating(int countRating) {
+		this.countRating = countRating;
+	}
 	public int getRating5() {
 		return rating5;
 	}

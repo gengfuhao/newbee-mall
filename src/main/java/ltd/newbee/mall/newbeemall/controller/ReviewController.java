@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ltd.newbee.mall.newbeemall.dao.ReviewMapper;
 import ltd.newbee.mall.newbeemall.entity.ReviewEntity;
 import ltd.newbee.mall.newbeemall.service.ReviewService;
+import ltd.newbee.mall.newbeemall.service.impl.ReviewServicelmpl;
 import ltd.newbee.mall.newbeemall.util.Result;
 import ltd.newbee.mall.newbeemall.util.ResultGenerator;
 import ltd.newbee.mall.newbeemall.vo.ReviewVO;
@@ -50,16 +51,19 @@ public class ReviewController {
 		int newuserid=Integer.parseInt(userid);
 		
 		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(newgoodsid,newuserid);
-		if (entitylist == null) {
+		//如果不判断null，直接调用size方法的话会发生nullPointerException 空指针
+		if (entitylist !=null && entitylist.size() == 0) {
 			return ResultGenerator.genFailResult("failed");
 		} else {
 			return ResultGenerator.genSuccessResult(reviewService.insertGoodsReview(reviewMap));
+			
 		}
 		
 	}
 	@GetMapping("/reviewStar")
 	@ResponseBody
 	public Result getReviewStar(int goodsId) {
+		
 
 		return ResultGenerator.genSuccessResult(reviewService.comStar(goodsId));
 

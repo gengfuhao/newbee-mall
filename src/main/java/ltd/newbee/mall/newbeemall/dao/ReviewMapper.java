@@ -15,14 +15,13 @@ public interface ReviewMapper {
 
 	// 确定review中 最大的review_id 插入
 	int insertGoodsReview(Map<String, Object> review);
+    int maxReviewId();
+	
 
-	int maxReviewId();
-//	int insertEntity(List<ReviewEntity> list);
-//	//求各个星的个数
+//	//求各个星的个数    
 	List<starNumberEntity> starNumber(int goodsId);
-	//商品review个数
-	int ratingNumber(int goodsId);
-	//综合评价 和 评价个数
-	List<ReviewEntity> comStar(int goodsId);
+	
+	//综合评价 和 评价个数  平均分数
+	List<starNumberEntity> comStar(int goodsId);
 
 }
