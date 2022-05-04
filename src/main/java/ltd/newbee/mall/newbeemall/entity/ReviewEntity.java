@@ -20,7 +20,7 @@ public class ReviewEntity {
 	private String photo4;
 	private String photo5;
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+
 	private Date reviewDate;
 
 	public int getGoodsId() {

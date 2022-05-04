@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ltd.newbee.mall.newbeemall.dao.ReviewMapper;
 import ltd.newbee.mall.newbeemall.entity.ReviewEntity;
+import ltd.newbee.mall.newbeemall.entity.RunRecommendApiHistory;
+import ltd.newbee.mall.newbeemall.entity.reviewLikeEntity;
 import ltd.newbee.mall.newbeemall.service.ReviewService;
 import ltd.newbee.mall.newbeemall.service.impl.ReviewServicelmpl;
 import ltd.newbee.mall.newbeemall.util.Result;
@@ -84,41 +86,34 @@ public class ReviewController {
 //		}
 //
 //	}
-////Data date
-//	@GetMapping("/getreview")
-//	@ResponseBody
-//	public Result getReview(int goodsId, int userId, int reviewId, int orderId, String nickName, int rating,
-//			String title, String content, String photo1, String photo2, String photo3, String photo4,
-//			String photo5) {
-//		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(goodsId, userId);
-//
-//		if (entitylist == null) {
-//			return ResultGenerator.genFailResult("failed");
-//		} else {
-//
-//			List<ReviewEntity> insertlist = new ArrayList<>();
-//			ReviewEntity vo = new ReviewEntity();
-//			vo.setGoodsId(goodsId);
-//			vo.setReviewId(reviewId);
-//			vo.setOrderId(orderId);
-//			vo.setNickName(nickName);
-//			vo.setRating(rating);
-//			vo.setTitle(title);
-//			vo.setContent(content);
-//			vo.setPhoto1(photo1);
-//			vo.setPhoto2(photo2);
-//			vo.setPhoto3(photo3);
-//			vo.setPhoto4(photo4);
-//			vo.setPhoto5(photo5);
-//			vo.setDate(new Date());
-//			insertlist.add(vo);
-//			reviewService.insertEntity(insertlist);
-//			int count = reviewService.insertEntity(insertlist);
-//
-//			return ResultGenerator.genSuccessResult("successed");
-//
-//		}
-//
-//	}
+	
+
+	@PostMapping("/getreviewlike")
+	@ResponseBody
+	public Result insterReviewLike(int reviewLike, int userId) {
+		
+		List<reviewLikeEntity> entitylist = reviewService.judgeLike(reviewLike, userId);
+
+		
+		if (entitylist !=null && entitylist.size() == 0) {
+			List<reviewLikeEntity> insertlist = new ArrayList<>();
+			reviewLikeEntity likeEntity = new reviewLikeEntity();
+			likeEntity.setReviewId(reviewLike);
+			likeEntity.setUserId(userId);
+			Date date =new Date();
+			likeEntity.setReviewDate(null);
+			
+			
+			insertlist.add(likeEntity);
+			reviewMapper.insertReviewLike(insertlist);
+			
+			return ResultGenerator.genSuccessResult("successed");
+		} else {
+
+			return ResultGenerator.genFailResult("failed");
+
+		}
+
+	}
 
 }

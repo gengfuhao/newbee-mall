@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import cn.hutool.core.bean.BeanUtil;
 import ltd.newbee.mall.newbeemall.dao.ReviewMapper;
 import ltd.newbee.mall.newbeemall.entity.ReviewEntity;
+import ltd.newbee.mall.newbeemall.entity.reviewLikeEntity;
 import ltd.newbee.mall.newbeemall.entity.starNumberEntity;
 import ltd.newbee.mall.newbeemall.service.ReviewService;
 import ltd.newbee.mall.newbeemall.vo.ReviewVO;
@@ -38,12 +39,7 @@ public class ReviewServicelmpl implements ReviewService {
 		return reviewMapper.judgeEntity(goodsId, userId);
 	}
 
-//	@Override
-//	public int insertEntity(List<ReviewEntity> list) {
-//		// TODO 自動生成されたメソッド・スタブ
-//		return reviewMapper.insertEntity(list);
-//
-//	}
+
 
 	@Override
 	public int insertGoodsReview(Map<String, Object> review) {
@@ -70,9 +66,7 @@ public class ReviewServicelmpl implements ReviewService {
 		starVO.setRating3(entitynumber.getRating3());
 		starVO.setRating2(entitynumber.getRating2());
 		starVO.setRating1(entitynumber.getRating1());
-		
 		}
-	
 	List<starNumberEntity> reviewcount=reviewMapper.comStar(goodsId);
 	for(starNumberEntity entitynumber : reviewcount) {
 		starVO.setCountContent(entitynumber.getCountContent());
@@ -83,6 +77,24 @@ public class ReviewServicelmpl implements ReviewService {
 	voList.add(starVO);
 	return voList;
 	}
+
+	//插入点赞
+	@Override
+	public int insertReviewLike(List<reviewLikeEntity> reviewLike) {
+		
+		return reviewMapper.insertReviewLike(reviewLike);
+	}
+
+	@Override
+	public List<reviewLikeEntity> judgeLike(int reviewId, int userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return  reviewMapper.judgeLike(reviewId, userId);
+	}
+
+
+
+
+	
 	
 
 	
