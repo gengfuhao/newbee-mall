@@ -24,6 +24,7 @@
 		order by rating desc,count desc;
 	</select>
 
+
 	<!--插入 -->
 	<insert id="insertGoodsReview">
 		insert into review
@@ -40,8 +41,8 @@
 	</select>
 	<!-- 判断是否可以插入 -->
 	<select id="judgeEntity"
-		resultType="ltd.newbee.mall.newbeemall.entity.ReviewEntity">
-		select rev.order_id,ord.user_id,it.goods_id
+		resultType="int">
+		select count(it.goods_id)
 		from
 		tb_newbee_mall_order_item as it left join review as rev
 		on
@@ -82,28 +83,28 @@
 
 
 
-	<!-- 平均レート 总评价  只评论数 -->
+	<!-- 平均レート 总评价  写评论数 -->
 	<select id="comStar"
 		resultType="ltd.newbee.mall.newbeemall.entity.starNumberEntity">
 		select
-		sum(rating)/count(review_id) as
-		count_star,count(content) as count_content,count(rating) as count_rating from review
+		avg(rating) as count_star,
+		count(content) as count_content,
+		count(rating) as count_rating from review
 		where goods_id=#{goodsId}
 	</select>
 	
 	<!-- 点赞 -->
 	<!-- 判断是否可以插入 -->
 	<select id="judgeLike"
-		resultType="ltd.newbee.mall.newbeemall.entity.reviewLikeEntity">
-		select user_id,review_id from review_like where user_id=#{userId} and review_id=#{reviewId}
+		resultType="int">
+		select count(*) from review_like where user_id=#{userId} and review_id=#{reviewId}
 	</select>
 	<insert id="insertReviewLike">
 		insert into review_like
 		(review_id,user_id,review_date)
 		values
-		<foreach item="item" collection="list" separator=",">
-			(#{item.reviewId},#{item.userId},#{item.reviewDate})
-		</foreach>
+		(#{reviewId},#{userId},#{reviewDate})
+		
 	</insert>
 	
 </mapper>

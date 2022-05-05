@@ -46,7 +46,6 @@ public class GoodsImageController {
 
 	@Controller
 	public class QuetionController {
-		
 
 		@GetMapping("/answer")
 		@ResponseBody
@@ -55,27 +54,23 @@ public class GoodsImageController {
 					.genSuccessResult(quetionAnswerService.answereService(goodsId, limitstart, count, orderby));
 		}
 	}
-	
+
 	@PostMapping("/getanswerlike")
 	@ResponseBody
 	public Result insterReviewLike(int answerId, int userId) {
-		
-		
+
 		List<answerLikeEntity> servicelist = quetionAnswerService.judgeLike(answerId, userId);
 
-		
-		if (servicelist !=null && servicelist.size() == 0) {
+		if (servicelist != null && servicelist.size() == 0) {
 			List<answerLikeEntity> insertlist = new ArrayList<>();
 			answerLikeEntity likeEntity = new answerLikeEntity();
 			likeEntity.setAnswerId(answerId);
 			likeEntity.setUserId(userId);
-			Date date =new Date();
-			likeEntity.setLikeDate(null);
-			
-			
+			likeEntity.setLikeDate(new Date());
+
 			insertlist.add(likeEntity);
 			quetionAnswerService.insertAnswerLike(insertlist);
-			
+
 			return ResultGenerator.genSuccessResult("successed");
 		} else {
 

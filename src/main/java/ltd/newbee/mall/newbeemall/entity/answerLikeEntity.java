@@ -1,6 +1,6 @@
 package ltd.newbee.mall.newbeemall.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class answerLikeEntity {
 	private int answerId;
@@ -31,6 +31,5 @@ public class answerLikeEntity {
 	public void setLikeDate(Date likeDate) {
 		this.likeDate = likeDate;
 	}
-	
 
 }

@@ -20,7 +20,6 @@ public class ReviewEntity {
 	private String photo4;
 	private String photo5;
 
-
 	private Date reviewDate;
 
 	public int getGoodsId() {
