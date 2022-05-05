@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ltd.newbee.mall.newbeemall.dao.ReviewMapper;
+import ltd.newbee.mall.newbeemall.dao.UserMapper;
+import ltd.newbee.mall.newbeemall.entity.MallUser;
 import ltd.newbee.mall.newbeemall.entity.ReviewEntity;
 import ltd.newbee.mall.newbeemall.entity.RunRecommendApiHistory;
 import ltd.newbee.mall.newbeemall.entity.reviewLikeEntity;
+import ltd.newbee.mall.newbeemall.service.CheckUserExistsService;
 import ltd.newbee.mall.newbeemall.service.ReviewService;
 import ltd.newbee.mall.newbeemall.service.impl.ReviewServicelmpl;
 import ltd.newbee.mall.newbeemall.util.Result;
@@ -31,12 +34,14 @@ public class ReviewController {
 	ReviewService reviewService;
 	@Resource
 	ReviewMapper reviewMapper;
+//	@Resource
+	UserMapper userMapper;
 
 //getmaping postmaping 一样
 	@GetMapping("/review")
 	@ResponseBody
 	public Result getreviewc(int goodsId) {
-
+//task1 展示review
 		return ResultGenerator.genSuccessResult(reviewService.revieService(goodsId));
 
 	}
@@ -45,75 +50,54 @@ public class ReviewController {
 	@PostMapping("/goodsReview/insert")
 	@ResponseBody
 	public Result insertReview(@RequestBody HashMap<String, Object> reviewMap) {
-//		int goodsid=(int)(reviewMap.get("goodsId"));
-//		int userid=(int)(reviewMap.get("userId"));
-		String goodsid=reviewMap.get("goodsId").toString();
-		String userid=reviewMap.get("userId").toString();
-		int newgoodsid=Integer.parseInt(goodsid);
-		int newuserid=Integer.parseInt(userid);
-		
-		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(newgoodsid,newuserid);
-		//如果不判断null，直接调用size方法的话会发生nullPointerException 空指针
-		if (entitylist !=null && entitylist.size() == 0) {
+//task 2 插入
+		String goodsid = reviewMap.get("goodsId").toString();
+		String userid = reviewMap.get("userId").toString();
+		int newgoodsid = Integer.parseInt(goodsid);
+		int newuserid = Integer.parseInt(userid);
+
+		int entitylist = reviewService.judgeEntity(newgoodsid, newuserid);
+		// 如果不判断null，直接调用size方法的话会发生nullPointerException 空指针
+//		if (entitylist !=null && entitylist.size() == 0) {
+		if (entitylist == 0) {
 			return ResultGenerator.genFailResult("failed");
 		} else {
-			return ResultGenerator.genSuccessResult(reviewService.insertGoodsReview(reviewMap));
-			
+
+			ResultGenerator.genSuccessResult(reviewService.insertGoodsReview(reviewMap));
+			return ResultGenerator.genSuccessResult("successed");
 		}
-		
+
 	}
+
 	@GetMapping("/reviewStar")
 	@ResponseBody
 	public Result getReviewStar(int goodsId) {
-		
+		// task 3
 
 		return ResultGenerator.genSuccessResult(reviewService.comStar(goodsId));
 
 	}
-	
-	
-
-//	// 判断是否可以插入
-//	@GetMapping("/checkReview")
-//	@ResponseBody
-//	public Result checkReview(int goodsId, int userId) {
-//		List<ReviewEntity> entitylist = reviewMapper.judgeEntity(goodsId, userId);
-//
-//		if (entitylist == null) {
-//			return ResultGenerator.genFailResult("failed");
-//		} else {
-//			return ResultGenerator.genSuccessResult("successed");
-//		}
-//
-//	}
-	
 
 	@PostMapping("/getreviewlike")
 	@ResponseBody
-	public Result insterReviewLike(int reviewLike, int userId) {
-		
-		List<reviewLikeEntity> entitylist = reviewService.judgeLike(reviewLike, userId);
+	public Result insertReviewLike(int reviewLike, int userId) {
+		// task4 点赞
+		int entitylist = reviewService.judgeLike(reviewLike, userId);
+//		MallUser user = userMapper.checkUserExists(userId);
 
-		
-		if (entitylist !=null && entitylist.size() == 0) {
+		if (entitylist != 0) {
 			List<reviewLikeEntity> insertlist = new ArrayList<>();
 			reviewLikeEntity likeEntity = new reviewLikeEntity();
 			likeEntity.setReviewId(reviewLike);
 			likeEntity.setUserId(userId);
-			Date date =new Date();
-			likeEntity.setReviewDate(null);
-			
-			
+
+			likeEntity.setReviewDate(new Date());
+
 			insertlist.add(likeEntity);
 			reviewMapper.insertReviewLike(insertlist);
-			
 			return ResultGenerator.genSuccessResult("successed");
-		} else {
-
-			return ResultGenerator.genFailResult("failed");
-
 		}
+		return ResultGenerator.genFailResult("failed");
 
 	}
-
 }

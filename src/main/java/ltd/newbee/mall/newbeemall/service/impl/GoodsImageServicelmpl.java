@@ -18,7 +18,6 @@ public class GoodsImageServicelmpl implements GoodsImageService {
 	@Resource
 	GoodsImageMapper goodsImageMapper;
 
-	// TODO 自動生成されたメソッド・スタブ
 	@Override
 	public List<ArrayList<GoodsImageVO>> goodsimage(int goodsId) {
 		List<ArrayList<GoodsImageVO>> image00 = new ArrayList<ArrayList<GoodsImageVO>>();
@@ -38,7 +37,6 @@ public class GoodsImageServicelmpl implements GoodsImageService {
 
 			if (sun % 8 == 0) {
 				image00.add((ArrayList<GoodsImageVO>) imagevo.clone());
-//				imagevo.clear();
 			} else if ((sun == n) && (sun % 8 != 0)) {
 				image00.add(imagevo);
 			}

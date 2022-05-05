@@ -10,22 +10,22 @@ import ltd.newbee.mall.newbeemall.vo.ReviewVO;
 import ltd.newbee.mall.newbeemall.vo.starNumberVO;
 
 public interface ReviewService {
-// review 展示 按rating 和点赞人数排序
+// task1 review 展示 按rating 和点赞人数排序
 	List<ReviewVO> revieService(int goodsId);
 
-//  插入
+//  task2 插入
 	int insertGoodsReview(Map<String, Object> review);
 
 	// 判断是否可以插入
-	List<ReviewEntity> judgeEntity(int goodsId, int userId);
-	
-	
-	//综合评价 和 评价个数  平均分数
-		List<starNumberVO> comStar(int goodsId);
-//		
-		//点赞 插入
-		//判断是否点赞了
-		List<reviewLikeEntity> judgeLike(int reviewId,int userId);
-		//点赞插入
-		int insertReviewLike(List<reviewLikeEntity> reviewLike);
+	int judgeEntity(int goodsId, int userId);
+
+	// task3 综合评价 和 评价个数 平均分数
+	starNumberVO comStar(int goodsId);
+
+	// task4 点赞 插入
+	// 判断是否点赞了
+	int judgeLike(int reviewId, int userId);
+
+	// 点赞插入
+	int insertReviewLike(List<reviewLikeEntity> reviewLike);
 }

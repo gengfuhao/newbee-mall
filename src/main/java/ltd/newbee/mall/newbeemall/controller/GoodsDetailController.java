@@ -21,12 +21,6 @@ public class GoodsDetailController {
 	@Resource
 	private GoodsDetailService goodsDetailService;
 
-//	@GetMapping("/goodsDetail")
-//	@ResponseBody
-//	public Result getgoodsDetail(long goodsId) {
-//		return ResultGenerator.genSuccessResult(goodsDetailService.findGoodsDetailsByGoodsId(goodsId));
-//	}
-
 	@RequestMapping(value = "/goods/detail/review/{id}", method = RequestMethod.POST)
 	@ResponseBody
 	public Result queryProduct(@PathVariable("id") String id) {

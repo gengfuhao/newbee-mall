@@ -36,20 +36,6 @@ public class IndexController {
 	@Resource
 	private RunRecommendApiHistoryService runRecommendApiHistoryService;
 
-	/*
-	 * @GetMapping("/newGoods")
-	 * 
-	 * @ResponseBody public Result getNewGoods() { return
-	 * ResultGenerator.genSuccessResult(newBeeMallIndexConfigService.
-	 * getConfigGoodsesForIndex(4, 5)); }
-	 * 
-	 * @GetMapping("/recommendGoodses")
-	 * 
-	 * @ResponseBody public Result getCommendGoodses() { return
-	 * ResultGenerator.genSuccessResult(newBeeMallIndexConfigService.
-	 * getConfigGoodsesForIndex(5, 5)); }
-	 */
-
 	@GetMapping("/Goodses")
 	@ResponseBody
 	public Result getGoodses(int configType) {

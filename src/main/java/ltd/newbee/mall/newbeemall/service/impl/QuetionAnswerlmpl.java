@@ -20,7 +20,6 @@ public class QuetionAnswerlmpl implements QuetionAnswerService {
 
 	@Override
 	public List<QuetionAnswerVO> answereService(int goodsId, int limitstart, int count, String orderby) {
-		// TODO 自動生成されたメソッド・スタブ
 //      展示页面
 		int newstart = 0;
 		newstart = (limitstart - 1) * count;
@@ -55,13 +54,11 @@ public class QuetionAnswerlmpl implements QuetionAnswerService {
 
 	@Override
 	public List<answerLikeEntity> judgeLike(int answerId, int userId) {
-		// TODO 自動生成されたメソッド・スタブ
 		return quetionAnswerMapper.judgeLike(answerId, userId);
 	}
 
 	@Override
 	public int insertAnswerLike(List<answerLikeEntity> answerLike) {
-		// TODO 自動生成されたメソッド・スタブ
 		return quetionAnswerMapper.insertAnswerLike(answerLike);
 	}
 
