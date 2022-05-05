@@ -35,7 +35,7 @@ public class IndexController {
 
 	@Resource
 	private RunRecommendApiHistoryService runRecommendApiHistoryService;
-
+//newbeemall-为你推荐商品
 	@GetMapping("/Goodses")
 	@ResponseBody
 	public Result getGoodses(int configType) {
@@ -49,7 +49,7 @@ public class IndexController {
 
 		return ResultGenerator.genSuccessResult(newBeeMallCategoryService.getCategoriesForIndex());
 	}
-
+//判断用户是否存在
 	@GetMapping("/user")
 	@ResponseBody
 	public Result user(long userId) {
@@ -67,8 +67,7 @@ public class IndexController {
 			// ResultGenerator.genSuccessResult(newBeeMallCheckGoodsService.getCheckGoodsesForIndex(userId,6));
 
 			// 用表连接 join
-			return ResultGenerator
-					.genSuccessResult(newBeeMallCheckGoodsService.getRescentCheckGoodsesForIndex(userId, 6));
+			return ResultGenerator.genSuccessResult(newBeeMallCheckGoodsService.getRescentCheckGoodsesForIndex(userId, 6));
 
 		}
 
@@ -78,14 +77,13 @@ public class IndexController {
 		 * if(count == 0 ) { return ResultGenerator.genFailResult("failed");
 		 */
 	}
-
+//猜你喜欢
 	@GetMapping("/runRecommendApi")
 	@ResponseBody
 	public Result runRecommendApi() {
+		RunRecommendApiHistory runRecommendApiHistory=new RunRecommendApiHistory();
+		runRecommendApiHistory.setRunDate(new Date());
 		List<RunRecommendApiHistory> list = runRecommendApiHistoryService.selectRescentCategoryId();
-		for (RunRecommendApiHistory run : list) {
-			run.setRunDate(new Date());
-		}
 		int count = runRecommendApiHistoryService.insertRunRecommendApiHistory(list);
 
 		if (count == 0) {

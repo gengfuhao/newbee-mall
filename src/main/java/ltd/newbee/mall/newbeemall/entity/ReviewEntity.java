@@ -2,10 +2,6 @@ package ltd.newbee.mall.newbeemall.entity;
 
 import java.util.Date;
 
-import javax.xml.crypto.Data;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class ReviewEntity {
 	private int goodsId;
 	private int reviewId;

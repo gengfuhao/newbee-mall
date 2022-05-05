@@ -1,8 +1,5 @@
 package ltd.newbee.mall.newbeemall.entity;
-
 import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class reviewLikeEntity {
 	private int reviewId;

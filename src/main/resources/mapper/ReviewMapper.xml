@@ -7,7 +7,7 @@
 		select
 		distinct rev.goods_id,rev.review_id,rev.order_id,
 		rev.nick_name,rev.rating,rev.title,rev.content,rev.photo1,
-		li.review_id,count(li.review_id) as count
+		li.review_id,count(li.review_id) as count,rev.review_date 
 		from
 		review as rev join
 		tb_newbee_mall_order_item as ite
@@ -103,8 +103,55 @@
 		insert into review_like
 		(review_id,user_id,review_date)
 		values
-		(#{reviewId},#{userId},#{reviewDate})
-		
+		(#{reviewId},#{userId},#{reviewDate})		
 	</insert>
+	
+ <!--插入数据 方法2 -->
+	<insert id="insertGoodsReview2">
+		insert into review
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="reviewId != null">
+				review_id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="goodsId != null">
+				goods_id,
+			</if>
+			<if test="nickName != null">
+				nick_name,
+			</if>
+			<if test="rating != null">
+				rating,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="photo1 != null">
+				photo1,
+			</if>
+			<if test="photo2 != null">
+				photo2,
+			</if>
+			<if test="photo3 != null">
+				photo3,
+			</if>
+			<if test="photo4 != null">
+				photo4,
+			</if>
+			<if test="photo5 != null">
+				photo5,
+			</if>
+			<if test="reviewDate != null">
+				review_date,
+			</if>
+		</trim>
+		
+ 	</insert> 
+	
 	
 </mapper>
