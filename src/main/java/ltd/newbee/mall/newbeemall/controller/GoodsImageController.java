@@ -25,18 +25,18 @@ public class GoodsImageController {
 	GoodsImageService goodsImageService;
 	@Resource
 	QuetionAnswerService quetionAnswerService;
-
+//展示照片 八张一组
 	@GetMapping("/goodsimage")
 	@ResponseBody
 	public Result goodsimagecontroller(int goodsId) {
 		return ResultGenerator.genSuccessResult(goodsImageService.goodsimage(goodsId));
 	}
-
+//展示商品信息
 	@Controller
 	public class tbNewMallController {
 		@Resource
 		TbNewMallGoodsInfoService tbNewMallGoodsInfoService;
-
+//商品详细页面-商品表信息抽出
 		@GetMapping("/tbnewbeeall")
 		@ResponseBody
 		public Result tbNewMallGoodsInfoService(long goodsId) {
@@ -46,7 +46,7 @@ public class GoodsImageController {
 
 	@Controller
 	public class QuetionController {
-
+//Q&A展示
 		@GetMapping("/answer")
 		@ResponseBody
 		public Result quetionAnswerService(int goodsId, int limitstart, int count, String orderby) {
@@ -54,7 +54,7 @@ public class GoodsImageController {
 					.genSuccessResult(quetionAnswerService.answereService(goodsId, limitstart, count, orderby));
 		}
 	}
-
+//Q&A点赞
 	@PostMapping("/getanswerlike")
 	@ResponseBody
 	public Result insterReviewLike(int answerId, int userId) {

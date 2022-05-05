@@ -37,7 +37,7 @@ public class ReviewController {
 //	@Resource
 	UserMapper userMapper;
 
-//getmaping postmaping 一样
+//getmaping postmaping 一样 goodsId=10180
 	@GetMapping("/review")
 	@ResponseBody
 	public Result getreviewc(int goodsId) {
@@ -80,24 +80,22 @@ public class ReviewController {
 
 	@PostMapping("/getreviewlike")
 	@ResponseBody
-	public Result insertReviewLike(int reviewLike, int userId) {
+	public Result ReviewLikeController(int reviewlikeId, int userId) {
 		// task4 点赞
-		int entitylist = reviewService.judgeLike(reviewLike, userId);
-//		MallUser user = userMapper.checkUserExists(userId);
+		int reviewLikeList = reviewService.judgeLike(reviewlikeId, userId);
 
-		if (entitylist != 0) {
+		if (reviewLikeList != 0) {
+			return ResultGenerator.genFailResult("failed");
+		} else {
 			List<reviewLikeEntity> insertlist = new ArrayList<>();
 			reviewLikeEntity likeEntity = new reviewLikeEntity();
-			likeEntity.setReviewId(reviewLike);
+			likeEntity.setReviewId(reviewlikeId);
 			likeEntity.setUserId(userId);
-
 			likeEntity.setReviewDate(new Date());
-
 			insertlist.add(likeEntity);
-			reviewMapper.insertReviewLike(insertlist);
-			return ResultGenerator.genSuccessResult("successed");
+			return ResultGenerator.genSuccessResult(reviewMapper.insertReviewLike(insertlist));
+
 		}
-		return ResultGenerator.genFailResult("failed");
 
 	}
 }

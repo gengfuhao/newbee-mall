@@ -21,18 +21,24 @@ public class GoodsDetailController {
 	@Resource
 	private GoodsDetailService goodsDetailService;
 
-	@RequestMapping(value = "/goods/detail/review/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public Result queryProduct(@PathVariable("id") String id) {
-		// ...业务处理
-		return ResultGenerator.genSuccessResult(id);
-	}
+//	@RequestMapping(value = "/goods/detail/review/{id}", method = RequestMethod.POST)
+//	@ResponseBody
+//	public Result queryProduct(@PathVariable("id") String id) {
+//		// ...业务处理
+//		return ResultGenerator.genSuccessResult(id);
+//	}
+//
+//	@DeleteMapping("/goods/detail/review")
+//	@ResponseBody
+//	public Result review(@RequestParam(value = "reviewId", required = true) long reviewId) {
+//		System.out.println(reviewId);
+//		return ResultGenerator.genSuccessResult(reviewId);
+//	}
 
-	@DeleteMapping("/goods/detail/review")
-	@ResponseBody
-	public Result review(@RequestParam(value = "reviewId", required = true) long reviewId) {
-		System.out.println(reviewId);
-		return ResultGenerator.genSuccessResult(reviewId);
-	}
-
+	//商品详细展-式样size
+@GetMapping("/goodsDetail")
+@ResponseBody
+public Result getgoodsDetail(long goodsId) {
+	return ResultGenerator.genSuccessResult(goodsDetailService.findGoodsDetailsByGoodsId(goodsId));
+}
 }

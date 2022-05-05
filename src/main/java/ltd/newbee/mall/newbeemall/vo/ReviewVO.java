@@ -1,6 +1,6 @@
 package ltd.newbee.mall.newbeemall.vo;
 
-import javax.xml.crypto.Data;
+import java.util.Date;
 
 public class ReviewVO {
 	private int goodsId;
@@ -15,7 +15,7 @@ public class ReviewVO {
 	private String photo3;
 	private String photo4;
 	private String photo5;
-	private Data reviewDate;
+	private Date reviewDate;
 
 	public int getGoodsId() {
 		return goodsId;
@@ -113,12 +113,14 @@ public class ReviewVO {
 		this.photo5 = photo5;
 	}
 
-	public Data getReviewDate() {
+	public Date getReviewDate() {
 		return reviewDate;
 	}
 
-	public void setReviewDate(Data reviewDate) {
+	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
+
+	
 
 }
